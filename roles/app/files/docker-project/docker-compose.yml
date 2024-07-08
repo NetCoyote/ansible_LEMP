@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+   db:
+      image: mysql:5.7
+      container_name: mysql-cont
+      restart: always
+      volumes:
+        -    mysql-data:/var/lib/mysql
+      environment:
+       MYSQL_ROOT_PASSWORD: parol
+       MYSQL_DATABASE: baza
+
+   php:
+     build: ./php_code/
+     container_name: php-cont
+     restart: always
+     depends_on:
+       - db
+     expose:
+       - 9000
+     volumes:
+        - ./php_code/:/var/www/html/
+
+   nginx:
+     build: ./nginx/
+     restart: always
+     container_name: nginx-cont
+     ports:
+       - 80:80
+     depends_on:
+       - php
+
+     volumes:
+         - ./php_code/:/var/www/html/
+
+volumes:
+    mysql-data:
+                                 

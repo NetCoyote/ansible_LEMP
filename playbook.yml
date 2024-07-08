@@ -1,0 +1,8 @@
+---
+- hosts: web
+  become : yes
+  roles:
+  - { role: common }
+  - { role: docker }
+  - { role: docker-compose }
+  - { role: app }

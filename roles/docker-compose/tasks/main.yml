@@ -1,0 +1,5 @@
+    - name: Установка Docker Compose v2
+      apt:
+        name: docker-compose-plugin
+        state: latest
+

@@ -1,0 +1,11 @@
+    - name: Обновить список пакетов и установить зависимости
+      apt:
+        update_cache: true
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+        state: latest
+
+

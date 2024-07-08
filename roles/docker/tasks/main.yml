@@ -1,0 +1,13 @@
+    - name: Добавить ключ GPG Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+    - name: Добавить репозиторий Docker в список apt sources
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+        state: present
+    - name: Установка Docker
+      apt:
+        name: docker.io
+        state: latest
+

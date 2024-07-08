@@ -1,0 +1,8 @@
+- name: Копирование файлов для App
+  copy:
+    src: ./roles/app/files/docker-project
+    dest: /tmp/
+
+
+- name: Запуск App
+  command: docker compose -f /tmp/docker-project/docker-compose.yml up -d
